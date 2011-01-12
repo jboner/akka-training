@@ -9,8 +9,10 @@ object AccumulatorActor {
   case object Sum
 }
 
+//Make this actor pass akka.training.test.AccumulatorActorSpec
 class AccumulatorActor extends Actor {
   def receive = {
-
+    case IncrementBy(num) =>
+    case Sum =>
   }
 }

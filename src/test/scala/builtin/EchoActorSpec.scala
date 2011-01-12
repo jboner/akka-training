@@ -7,7 +7,7 @@ import akka.actor._
 import akka.actor.Actor._
 import akka.training.EchoActor
 
-class Exercise1Spec extends WordSpec
+class EchoActorSpec extends WordSpec
                   with BeforeAndAfterAll
                   with BeforeAndAfterEach
                   with MustMatchers

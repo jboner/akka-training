@@ -1,4 +1,4 @@
-package akka.training.test
+package builtin
 
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, WordSpec}
 import org.scalatest.matchers.MustMatchers
@@ -8,7 +8,7 @@ import akka.actor.Actor._
 import akka.training.AccumulatorActor
 import akka.training.AccumulatorActor._
 
-class Exercise2Spec extends WordSpec
+class AccumulatorActorSpec extends WordSpec
                   with BeforeAndAfterAll
                   with BeforeAndAfterEach
                   with MustMatchers
