@@ -18,13 +18,14 @@ object Mailman {
   }
 
   trait ParcelManagement { self: Actor =>
+    def findRecipientFor(recipientUuid: Uuid): Option[ActorRef]
     def handleParcel: Receive = {
       case _ =>
     }
   }
 }
 
-class Mailman extends Actor with RegistrationBehavior with ParcelManagement{
+class Mailman extends Actor with RegistrationBehavior with ParcelManagement {
   def receive = {
     case _ =>
   }
