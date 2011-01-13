@@ -12,7 +12,7 @@ class Exercise4Spec extends WordSpec with MustMatchers {
         //Write some code to experiment with your newly created mailman
       }
 
-      "BONUS:" in {
+      "BONUS: " in {
 
       }
    }

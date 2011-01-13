@@ -11,13 +11,13 @@ object Mailman {
   case class Parcel(recipient: Uuid, contents: AnyRef)
   case class ReturnToSender(parcel: Parcel)
 
-  trait RegistrationBehavior { self: Actor =>
+  trait RegistrationBehavior { actor: Actor =>
     def handleRegistrations: Receive = {
       case _ =>
     }
   }
 
-  trait ParcelManagement { self: Actor =>
+  trait ParcelManagement { actor: Actor =>
     def findRecipientFor(recipientUuid: Uuid): Option[ActorRef]
     def handleParcel: Receive = {
       case _ =>
