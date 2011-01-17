@@ -5,7 +5,7 @@ import akka.agent._
 object TheCrime {
   case class Suspect(name : String)
 
-  val suspects: Agent[Set[Suspect]] = agent(Set[Suspect]).start
+  val suspects: Agent[Set[Suspect]] = Agent(Set[Suspect]())
 
   def addSuspect(suspect: Suspect): Unit = suspects send (_ + suspect)
 
@@ -15,7 +15,7 @@ object TheCrime {
 
   def removeSuspects(predicate: Suspect => Boolean): Unit = suspects send (_ filterNot predicate)
 
-  def addSuspects(suspects: Set[Suspect]): Unit = suspects send (_ ++ suspects)
+  def addSuspects(newSuspects: Set[Suspect]): Unit = suspects send (_ ++ newSuspects)
 
-  def removeAllSuspects(): Unit
+  def removeAllSuspects(): Unit = suspects() = Set()
 }

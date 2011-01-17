@@ -23,7 +23,7 @@ object TheCrime {
 
   }
 
-  def addSuspects(suspects: Set[Suspect]): Unit = {
+  def addSuspects(newSuspects: Set[Suspect]): Unit = {
 
   }
 
