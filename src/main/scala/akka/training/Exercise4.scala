@@ -18,7 +18,7 @@ object Mailman {
   }
 
   trait ParcelManagement { actor: Actor =>
-    def findRecipientFor(recipientUuid: Uuid): Option[ActorRef]
+    def findRecipientFor(recipientUuid: Uuid): Option[ActorRef] = None /* Implement */
     def handleParcel: Receive = {
       case _ =>
     }
