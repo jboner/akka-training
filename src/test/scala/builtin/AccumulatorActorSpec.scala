@@ -1,4 +1,4 @@
-package builtin
+package akka.training.test
 
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, WordSpec}
 import org.scalatest.matchers.MustMatchers
