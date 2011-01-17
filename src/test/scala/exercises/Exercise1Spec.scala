@@ -28,5 +28,9 @@ class Exercise1Spec extends WordSpec with MustMatchers {
         //Create an instance of your EchoActor, start it, then stop it, then go back to your previous tests
         //and make sure your actors are stopped at the end of the test
       }
+
+      "BONUS: what's the difference between using 'reply_?' and 'reply'?" in {
+        //Create a couple of Actors and try reply_? vs. reply
+      }
    }
 }

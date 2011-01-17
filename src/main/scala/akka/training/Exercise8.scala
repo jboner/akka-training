@@ -26,4 +26,8 @@ object TheCrime {
   def addSuspects(suspects: Set[Suspect]): Unit = {
 
   }
+
+  def removeAllSuspects(): Unit = {
+
+  }
 }

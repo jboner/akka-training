@@ -12,7 +12,7 @@ class Exercise5Spec extends WordSpec with MustMatchers {
 
       }
 
-      "BONUS: Go back to Exercise4 and implement the message forwarding with the forward method" in {
+      "teach you that it's possible to create new actors within actors" in {
 
       }
    }

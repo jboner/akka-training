@@ -12,8 +12,8 @@ class Exercise4Spec extends WordSpec with MustMatchers {
         //Write some code to experiment with your newly created mailman
       }
 
-      "BONUS: " in {
-
+      "BONUS: devise a way to handle when a recipient has been stopped when attempting to dispatch Parcel to it" in {
+        //Modify your code to handle the situation where the recipient has been stopped, you decide what's appropriate!
       }
    }
 }
