@@ -1,10 +1,9 @@
 package akka.training
 
 import akka.agent.Agent
+case class Suspect(name : String)
 
-object TheCrime {
-  case class Suspect(name : String)
-
+class Crime {
   val suspects: Agent[Set[Suspect]] = null /*Add the agent here*/
 
   def addSuspect(suspect: Suspect): Unit = {
