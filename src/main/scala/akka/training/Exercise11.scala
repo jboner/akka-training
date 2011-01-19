@@ -4,6 +4,9 @@ import akka.actor._
 import akka.actor.Actor._
 import akka.training.Chat._
 
+//The idea is to have this as a group exercise, and have the participants suggest improvements and additional features
+//to be implemented together and run on each individuals machine
+
 object Chat {
   def connect(name: String, host: String, port: Int) = remote.actorFor("chatclient:"+name, host, port)
   def join(name: String, host: String, port: Int) = {
