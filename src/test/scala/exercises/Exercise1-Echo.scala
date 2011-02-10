@@ -40,8 +40,8 @@ class EchoActor { //TODO: First, we need to make sure this is extends Actor
 */
 
 class EchoActorSpec extends AkkaTrainingTest {
-  "An EchoActor" should {
-     "be instantiable" in {
+  "Exercise1" should {
+     "teach you how to create, start and stop an actor" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor
 
       //TODO: Start the ActorRef
@@ -51,17 +51,21 @@ class EchoActorSpec extends AkkaTrainingTest {
       //TODO: Stop the ActorRef and make sure that it is stopped
      }
 
-    "echo the first message" in {
+    "teach you how to reply to the first message" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
 
       //TODO: Send the ActorRef a String message using !! and make sure you get the expected response
 
       //TODO: Stop the ActorRef
+    }
+
+    "teach you what happens when you send a message to a stopped actor" in {
+      //TODO: Create an ActorRef pointing to an instance of your EchoActor
 
       //TODO: Send the ActorRef a String message using !!! and make sure you get the expected response
     }
 
-    "echo back messages consistently" in {
+    "teach you how to echo back messages consistently" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
 
       //TODO: Send a lot of different kinds of String messages to the ActorRef and make sure you consistently get the expected response
@@ -69,7 +73,7 @@ class EchoActorSpec extends AkkaTrainingTest {
       //TODO: Stop the ActorRef
     }
 
-    "handle the absense of a sender" in {
+    "teach you how to handle the absense of a sender" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
 
       //TODO: Send a String message to the ActorRef that doesn't have any sender
@@ -79,7 +83,7 @@ class EchoActorSpec extends AkkaTrainingTest {
       //TODO: Stop the ActorRef
     }
 
-    "echo back non-string messages" in {
+    "teach you how to respond with different kinds of responses" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
 
       //TODO: Send a lot of different kinds of messages (numbers, null, objects etc)

@@ -44,8 +44,8 @@ class EchoActor extends Actor { //TODO: First, we need to make sure this is exte
 */
 
 class EchoActorSpec extends AkkaTrainingTest {
-  "An EchoActor" should {
-    "be instantiable" in {
+  "Exercise 1" should {
+    "teach you how to create, start and stop an actor" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor
       val actor = actorOf[EchoActor]
 
@@ -54,22 +54,29 @@ class EchoActorSpec extends AkkaTrainingTest {
 
       //TODO: Make sure that the ActorRef is non-null and is running
       actor must not be null
-      actor.isRunning must be (true)
+      actor.isRunning must be === true
 
       //TODO: Stop the ActorRef and make sure that it is stopped
       actor.stop
-      actor.isShutdown must be (true)
+      actor.isShutdown must be === true
     }
 
-    "echo the first message" in {
+    "teach you how to reply to the first message" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
       val actor = actorOf[EchoActor].start
 
       //TODO: Send the ActorRef a String message using !! and make sure you get the expected response
-      (actor !! "ping") must equal (Some("ping"))
+      (actor !! "ping") must be === Some("ping")
 
       //TODO: Stop the ActorRef
       actor.stop
+
+
+    }
+
+    "teach you what happens when you send a message to a stopped actor" in {
+      //TODO: Create an ActorRef pointing to an instance of your EchoActor
+      val actor = actorOf[EchoActor]
 
       //TODO: Send the ActorRef a String message using !!! and make sure you get the expected response
       intercept[ActorInitializationException] {
@@ -77,7 +84,7 @@ class EchoActorSpec extends AkkaTrainingTest {
       }
     }
 
-    "echo back messages consistently" in {
+    "teach you how to echo back messages consistently" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
       val actor = actorOf[EchoActor].start
 
@@ -85,14 +92,14 @@ class EchoActorSpec extends AkkaTrainingTest {
       val r = new java.util.Random
       for(i <- 1 to 100) {
          val msg = r.nextInt.toString
-         (actor !! msg) must equal (Some(msg))
+         (actor !! msg) must be === Some(msg)
       }
 
       //TODO: Stop the ActorRef
       actor.stop
     }
 
-    "handle the absense of a sender" in {
+    "teach you how to handle the absense of a sender" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
       val actor = actorOf[EchoActor].start
 
@@ -100,23 +107,23 @@ class EchoActorSpec extends AkkaTrainingTest {
       actor ! "ping"
 
       //TODO: Send another String message to the ActorRef and make sure you get the expected response
-      (actor !! "ping") must equal (Some("ping"))
+      (actor !! "ping") must be === Some("ping")
 
       //TODO: Stop the ActorRef
       actor.stop
     }
 
-    "echo back non-string messages" in {
+    "teach you how to respond with different kinds of responses" in {
       //TODO: Create an ActorRef pointing to an instance of your EchoActor and start it
       val actor = actorOf[EchoActor].start
 
       //TODO: Send a lot of different kinds of messages (numbers, null, objects etc)
       //      to the ActorRef and make sure you consistently get the expected response
-      (actor !! 5) must equal (Some(5))
-      (actor !! null) must equal (Some(null))
-      (actor !! true) must equal (Some(true))
+      (actor !! 5) must be === Some(5)
+      (actor !! null) must be === Some(null)
+      (actor !! true) must be === Some(true)
       val obj = new java.lang.Object
-      (actor !! obj) must equal (Some(obj))
+      (actor !! obj) must be === Some(obj)
 
       //TODO: Stop the ActorRef
       actor.stop

@@ -78,9 +78,9 @@ class AccumulatorActorSpec extends AkkaTrainingTest {
 
         //TODO: Verify, without sending a message to the actor, that it can accept all different message types
         //      defined in the AccumulatorActor object
-        actor.isDefinedAt(Sum) must be (true)
-        actor.isDefinedAt(Add(1)) must be (true)
-        actor.isDefinedAt(Set(1)) must be (true)
+        actor.isDefinedAt(Sum) must be === true
+        actor.isDefinedAt(Add(1)) must be === true
+        actor.isDefinedAt(Set(1)) must be === true
 
         //TODO: Stop the AccumulatorActor
         actor.stop
@@ -92,15 +92,15 @@ class AccumulatorActorSpec extends AkkaTrainingTest {
 
         //TODO: Send the set-message to the ActorRef and use the sum-message to verify that you get the expected result
         actor ! Set(10)
-        (actor !! Sum) must equal (Some(10))
+        (actor !! Sum) must be === Some(10)
 
         //TODO: Send the add-message to the ActorRef and use the sum-message to verify that you get the expected result
         actor ! Add(1000)
-        (actor !! Sum) must equal (Some(1010))
+        (actor !! Sum) must be === Some(1010)
 
         //TODO: Send the set-message to the ActorRef and use the sum-message to verify that you get the expected result
         actor ! Set(0)
-        (actor !! Sum) must equal (Some(0))
+        (actor !! Sum) must be === Some(0)
 
         //TODO: Stop the AccumulatorActor
         actor.stop

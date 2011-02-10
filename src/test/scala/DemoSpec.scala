@@ -18,7 +18,7 @@ class DemoSpec extends WordSpec
 
   "A DemoSpec" should {
      "be able to know if 0 is 0" in {
-        0 must be (0)
+        0 must be === 0
      }
   }
 }
