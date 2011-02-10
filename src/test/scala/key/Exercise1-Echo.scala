@@ -22,8 +22,8 @@ import akka.actor.Actor._
  * this is where you will implement the behavior of the actor.
  *
  * Underneath the EchoActor-class is the unit-test you will create
- * to verify
- * ...
+ * to verify your implementation.
+ *
  * To verify that your code works as expected run:
  * sbt > test-only akka.training.key.EchoActorSpec
  */
