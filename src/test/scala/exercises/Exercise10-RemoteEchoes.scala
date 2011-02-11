@@ -1,3 +1,12 @@
+/**
+ * Exercise 10 - "Remote echoes"
+ *
+ * In this exercise we will learn how to expose our actors as
+ * server managed remote actors.
+ *
+ * Let's go!
+ */
+
 /*
 *  Open 2 consoles
 *  In the first, navigate to this project
