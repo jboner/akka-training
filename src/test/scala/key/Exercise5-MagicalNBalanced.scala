@@ -27,6 +27,9 @@ object JobRelated {
     def perform() = numbers.sum
   }
 
+  //This message tells a Worker that he should stop
+  case object StopWorking
+
   //A Worker performs Tasks and sends back the result
   class Worker extends Actor {
     def receive = {
@@ -34,6 +37,7 @@ object JobRelated {
         log.info("%s starts to perform work of type %s",self, w.getClass.getSimpleName)
         self reply_? w.perform()
         log.info("%s stops to perform work of type %s",self, w.getClass.getSimpleName)
+      case StopWorking => self.stop
     }
   }
 
@@ -54,7 +58,10 @@ object JobRelated {
 
     def forwardWorkToAWorker(w: Work) {
       //Use conjureNewWorker() and send the Work to that worker, preserving the origin of the work, if any
-      conjureNewWorker forward w
+      val worker = conjureNewWorker
+      worker forward w
+      //TODO: Then tell the worker to stop working
+      worker ! StopWorking
     }
   }
 
