@@ -15,7 +15,6 @@ package akka.training
 import akka.actor._
 import akka.actor.Actor._
 import akka.dispatch.{ Future, Futures }
-import akka.training.AkkaTrainingTest
 import akka.training.FutureWork._
 import akka.training.JobRelated.{ Work, Worker, SumSequence }
 
