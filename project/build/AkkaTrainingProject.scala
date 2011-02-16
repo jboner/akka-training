@@ -20,7 +20,7 @@ class AkkaTrainingProject(info: ProjectInfo) extends DefaultProject(info) with A
 //val akkaSpring = akkaModule("spring")
   import Repositories._
   val scalaTestModuleConfig   = ModuleConfiguration("org.scalatest",scalaToolsReleases)
-  val akkaModuleConfig        = ModuleConfiguration("se.scalablesolutions.akka",akkaReleases)
+  val akkaModuleConfig2        = ModuleConfiguration("se.scalablesolutions.akka",akkaReleases)
 
   //Testing
    lazy val junit          = "junit"                  % "junit"               % "4.5"             % "test" //Common Public License 1.0

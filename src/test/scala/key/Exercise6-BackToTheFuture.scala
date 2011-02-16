@@ -138,5 +138,25 @@ class FutureSpec extends AkkaTrainingTest {
        //TODO: Stop foreman
        foreman.stop
      }
+
+     "BONUS: teach you how to aggregate the results of several futures into one" in {
+       //TODO: Create and start a WizardForeman
+       val foreman = actorOf[WizardForeman].start
+
+       //TODO: Using !!!, send 10 DelayedEchoWork with different sleepytimes, and have it echo some integer value,
+       //      to the foreman and generate a list of the resulting futures.
+       val numbers = (1 to 10).toList
+       val futures = for(i <- numbers) yield foreman.!!![Int](DelayedEchoWork(i * 100, i))
+
+       //TODO: Do a non-blocking fold or reduce of the futures and sum the values
+       val sumFuture = Futures.fold(0)(futures)(_ + _)
+
+       //TODO: Await the final value and verify that you got the result you expected
+
+       sumFuture.await.result.get must be === numbers.sum
+
+       //TODO: Stop foreman
+       foreman.stop
+     }
   }
 }
