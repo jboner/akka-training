@@ -6,18 +6,19 @@ class AkkaTrainingProject(info: ProjectInfo) extends DefaultProject(info) with A
     lazy val akkaReleases       = MavenRepository("Akka Repository","http://akka.io/repository/")
   }
 
-  val akkaStm = akkaModule("stm")
-  val akkaTypedActor = akkaModule("typed-actor")
-  val akkaRemote = akkaModule("remote")
-  val akkaHttp = akkaModule("http")
-//val akkaAmqp = akkaModule("amqp")
-//val akkaCamel = akkaModule("camel")
-//val akkaJta = akkaModule("jta")
-//val akkaKernel = akkaModule("kernel")
-//val akkaCassandra = akkaModule("persistence-cassandra")
-//val akkaMongo = akkaModule("persistence-mongo")
-//val akkaRedis = akkaModule("persistence-redis")
-//val akkaSpring = akkaModule("spring")
+  akkaActor withSources
+  val akkaStm = akkaModule("stm") withSources
+  val akkaTypedActor = akkaModule("typed-actor") withSources
+  val akkaRemote = akkaModule("remote") withSources
+  val akkaHttp = akkaModule("http") withSources
+//val akkaAmqp = akkaModule("amqp") withSources
+//val akkaCamel = akkaModule("camel") withSources
+//val akkaJta = akkaModule("jta") withSources
+//val akkaKernel = akkaModule("kernel") withSources
+//val akkaCassandra = akkaModule("persistence-cassandra") withSources
+//val akkaMongo = akkaModule("persistence-mongo") withSources
+//val akkaRedis = akkaModule("persistence-redis") withSources
+//val akkaSpring = akkaModule("spring") withSources
   import Repositories._
   val scalaTestModuleConfig   = ModuleConfiguration("org.scalatest",scalaToolsReleases)
   val akkaModuleConfig2        = ModuleConfiguration("se.scalablesolutions.akka",akkaReleases)
