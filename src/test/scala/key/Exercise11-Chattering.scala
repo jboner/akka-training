@@ -9,7 +9,7 @@
  * Let's go!
  */
 
-package akka.training
+package akka.training.key
 
 import akka.training.AkkaTrainingTest
 import akka.actor._
@@ -25,12 +25,10 @@ class ChatActor(id: String) extends Actor {
 
   def receive = {
     case Message(msg) =>
-      //TODO: append the message to the chatLog
-
-      //TODO: (optional) print out all the messages so far
-
+      chatLog = chatLog :+ msg
+      chatLog foreach (msg => log.slf4j.info("===> {}", msg))
     case GetChatLog =>
-      //TODO: reply with the chatLog
+      self reply chatLog
   }
 }
 
@@ -38,36 +36,45 @@ class ChatSpec extends AkkaTrainingTest {
   "Exercise11" should {
     "teach you how to start the remote server" in {
       //TODO: start the remote server on an address of your choice
+      Actor.remote.start("localhost", 2552)
 
       //TODO: verify that the remote server is running
+      Actor.remote.isRunning must be (true)
 
       //TODO: verify that the remote server is running on the address you specified
+      Actor.remote.address.getHostName must be ("localhost")
+      Actor.remote.address.getPort must be (2552)
     }
 
     "teach you how to stop the remote server" in {
       //TODO: shut down the remote server
+      Actor.remote.shutdown
 
       //TODO: verify that the remote server is not running any more
+      Actor.remote.isRunning must be (false)
     }
 
     "teach you how register and use a remote actor" in {
       //TODO: start the remote server on an address of your choice
+      Actor.remote.start("localhost", 2552)
 
       //TODO: register the ChatActor as a remote actor on the server
+      Actor.remote.register("chat:service", actorOf(new ChatActor("chat:service")))
 
       //TODO: get a reference to the remote ChatActor on the client side
-      //val chat: ActorRef = ..
+      val chat = Actor.remote.actorFor("chat:service", "localhost", 2552)
 
-      // Uncomment when you have the chat actor
-      //chat ! Message("Hello guys")
-      //chat ! Message("How are you?")
+      //TDOO: send chat messages to chat actor
+      chat ! Message("Hello guys")
+      chat ! Message("How are you?")
 
       //TODO: get the chat log of messages
-      //val chatLog: Vector[String] = ...
+      val chatLog: Vector[String] = (chat !! GetChatLog)
+        .as[Vector[String]]
+        .getOrElse(throw new Exception("Couldn't get the chat log from ChatServer"))
 
-      // Uncomment when you have the chatLog
-      //chatLog(0) must equal ("Hello guys")
-      //chatLog(1) must equal ("How are you?")
+      chatLog(0) must equal ("Hello guys")
+      chatLog(1) must equal ("How are you?")
 
       Actor.remote.shutdown
     }
