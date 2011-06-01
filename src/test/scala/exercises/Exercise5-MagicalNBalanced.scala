@@ -13,6 +13,7 @@ package akka.training
 
 import akka.actor._
 import akka.actor.Actor._
+import akka.event.EventHandler
 import akka.routing._
 import java.io.Serializable
 import JobRelated._
@@ -33,9 +34,9 @@ object JobRelated {
   class Worker extends Actor {
     def receive = {
       case w: Work =>
-        log.info("%s starts to perform work of type %s",self, w.getClass.getSimpleName)
+        EventHandler.info(this, "%s starts to perform work of type %s" format (self, w.getClass.getSimpleName))
         self reply_? w.perform()
-        log.info("%s stops to perform work of type %s",self, w.getClass.getSimpleName)
+        EventHandler.info(this, "%s stops to perform work of type %s" format (self, w.getClass.getSimpleName))
       case StopWorking => self.stop
     }
   }
@@ -113,7 +114,7 @@ class ForemanSpec extends AkkaTrainingTest {
       else Thread.sleep(sleepIntervalMs)
     }
 
-    error("Test failed")
+    sys.error("Test failed")
   }
 
   "Exercise5" should {

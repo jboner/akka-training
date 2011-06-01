@@ -3,6 +3,7 @@
 src_managed
 activemq-data
 project/plugins/project
+project/plugins/target
 project/boot/*
 */project/build/target
 */project/boot

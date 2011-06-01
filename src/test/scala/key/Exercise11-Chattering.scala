@@ -14,6 +14,7 @@ package akka.training.key
 import akka.training.AkkaTrainingTest
 import akka.actor._
 import akka.actor.Actor._
+import akka.event.EventHandler
 
 sealed trait ChatMessage
 case class Message(msg: String) extends ChatMessage
@@ -26,7 +27,7 @@ class ChatActor(id: String) extends Actor {
   def receive = {
     case Message(msg) =>
       chatLog = chatLog :+ msg
-      chatLog foreach (msg => log.slf4j.info("===> {}", msg))
+      chatLog foreach (msg => EventHandler.info(this, "===> " + msg))
     case GetChatLog =>
       self reply chatLog
   }

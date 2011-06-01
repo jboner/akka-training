@@ -11,7 +11,6 @@
 
 package akka.training
 
-import akka.training.AkkaTrainingTest
 import akka.actor._
 import akka.actor.Actor._
 
