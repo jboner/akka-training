@@ -19,4 +19,6 @@ class AkkaTrainingProject(info: ProjectInfo) extends DefaultProject(info) with A
   // module configurations
   val scalaTestModuleConfig = ModuleConfiguration("org.scalatest", Repositories.ScalaToolsReleases)
   val akkaModuleConfig2     = ModuleConfiguration("se.scalablesolutions.akka", Repositories.AkkaReleases)
+
+  override def compileOptions = Nil
 }
